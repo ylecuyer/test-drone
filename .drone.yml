@@ -1,0 +1,14 @@
+clone:
+  git:
+    image: plugins/git
+    remote: https://github.com/ylecuyer/test-drone.git
+
+pipeline:
+  build:
+    image: node:9.5
+    commands:
+      - npm install -g grunt-cli
+      - git config --global user.email "test@testy.com"
+      - git config --global user.name "Test testy"
+      - git version
+      - grunt -d
