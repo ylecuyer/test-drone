@@ -2,9 +2,8 @@ clone:
   git:
     image: plugins/git
     remote: https://github.com/ylecuyer/test-drone.git
-
 pipeline:
-	restore-cache:
+  restore-cache:
     image: drillster/drone-volume-cache
     restore: true
     mount:
