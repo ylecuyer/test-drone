@@ -4,6 +4,15 @@ clone:
     remote: https://github.com/ylecuyer/test-drone.git
 
 pipeline:
+	restore-cache:
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - ./node_modules
+      - ./.git
+    # Mount the cache volume, needs "Trusted"
+    volumes:
+      - /tmp/cache:/cache
   build:
     image: node:9.5
     commands:
@@ -13,8 +22,12 @@ pipeline:
       - git version
       - npm install
       - echo "coucou"
-
-cache:
-  mount:
-    - node_modules
-    - .git
+		rebuild-cache:
+			image: drillster/drone-volume-cache
+			rebuild: true
+			mount:
+				- ./node_modules
+				- ./.git
+			# Mount the cache volume, needs "Trusted"
+			volumes:
+				- /tmp/cache:/cache
