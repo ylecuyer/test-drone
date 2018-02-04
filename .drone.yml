@@ -22,11 +22,11 @@ pipeline:
       - npm install
       - echo "coucou"
   rebuild-cache:
-	  image: drillster/drone-volume-cache
-		  rebuild: true
-		  mount:
-			  - ./node_modules
-				- ./.git
-			# Mount the cache volume, needs "Trusted"
-			volumes:
-				- /tmp/cache:/cache
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+    - ./node_modules
+    - ./.git
+    # Mount the cache volume, needs "Trusted"
+    volumes:
+      - /tmp/cache:/cache
