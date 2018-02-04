@@ -12,4 +12,9 @@ pipeline:
       - git config --global user.name "Test testy"
       - git version
       - npm install
-      - grunt -d
+      - echo "coucou"
+
+cache:
+  mount:
+    - node_modules
+    - .git
